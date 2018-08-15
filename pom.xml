@@ -50,6 +50,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- tomcat  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -61,11 +62,20 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
-		<!--配置支持jsp -->
+		<!--  jsp -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+		
+		<!-- Spring Boot provides Actuator to monitor and manage our application. 
+			Actuator is a tool which has HTTP endpoints. 
+			when application is pushed to production, 
+			you can choose to manage and monitor your application using HTTP endpoints. -->
+		<dependency>  
+        	<groupId>org.springframework.boot</groupId>  
+        	<artifactId>spring-boot-starter-actuator</artifactId>  
+    	</dependency>  
 
 	</dependencies>
 

@@ -1,4 +1,5 @@
 package com.jasonz.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,6 @@ import com.jasonz.entities.ShareCompany;
 @RestController
 public class SpringBootJdbcController
 {
-
 	@Autowired  
     public JdbcTemplate jdbc;  
 	
@@ -29,8 +29,8 @@ public class SpringBootJdbcController
     @RequestMapping("/insertsc")  
     public String insertsc()
     {  
-        String sql = "insert into sharecompany(companyid,LegalName) "
-        		+ " values ('aaaaaaaaa','bbbbbbbbbbbbbbb') ";
+        String sql = "insert into test(companyid,LegalName) "
+        		+ " values ('aaaaaaa','bbbbb1bbb') ";
     	jdbc.execute(sql);  
         return"data inserted Successfully";  
     }  
@@ -42,11 +42,6 @@ public class SpringBootJdbcController
     {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
-
-//		User n = new User();
-//		n.setName(name);
-//		n.setEmail(email);
-//		userRepository.save(n);
 		
 		ShareCompany sc = new ShareCompany();
 		sc.setCompanyId(companyId);
@@ -62,5 +57,4 @@ public class SpringBootJdbcController
 		// This returns a JSON or XML with the users
 		return repository.findAll();
 	}
-
 }

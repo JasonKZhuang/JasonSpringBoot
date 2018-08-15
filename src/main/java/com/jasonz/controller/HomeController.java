@@ -14,6 +14,7 @@ public class HomeController
 	// The @RequestMapping annotation is used to provide routing information. It
 	// tells to the Spring that any HTTP request should map to the corresponding
 	// method.
+	
 	@RequestMapping("/hello")
 	public String hello()
 	{
