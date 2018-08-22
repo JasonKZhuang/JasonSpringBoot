@@ -1,4 +1,4 @@
-package com.jasonz.controller;
+package com.jasonz.controller.simple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,10 +21,8 @@ public class SpringBootJdbcController
 	@Autowired  
     public JdbcTemplate jdbc;  
 	
-	
 	@Autowired
 	private IShareCompanyRepository repository;
-	
 	
     @RequestMapping("/insertsc")  
     public String insertsc()

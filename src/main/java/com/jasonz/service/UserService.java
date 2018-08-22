@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jasonz.dao.IUserRepository;
+import com.jasonz.dao.IUserDao;
 import com.jasonz.entities.UserRecord;
 
 /** 
@@ -19,7 +19,7 @@ import com.jasonz.entities.UserRecord;
 public class UserService
 {
 	@Autowired
-    private IUserRepository userRepository;  
+    private IUserDao userRepository;  
     
 	public List<UserRecord> getAllUsers()
     {  

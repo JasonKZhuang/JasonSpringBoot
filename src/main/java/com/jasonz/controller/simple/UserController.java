@@ -1,4 +1,4 @@
-package com.jasonz.controller;
+package com.jasonz.controller.simple;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +23,7 @@ public class UserController
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/")
+	@RequestMapping("/all-user")
 	public List<UserRecord> getAllUser()
 	{
 		List<UserRecord> retList = userService.getAllUsers();
