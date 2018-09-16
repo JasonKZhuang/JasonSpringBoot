@@ -18,7 +18,7 @@ import com.jasonz.service.UserService;
  * @version Create Date：Aug 15, 2018 11:35:03 AM
  */
 @RestController
-public class UserController
+public class CrudRepositoryController
 {
 	@Autowired
 	private UserService userService;

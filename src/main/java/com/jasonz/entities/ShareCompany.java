@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,37 +18,25 @@ import javax.persistence.Table;
  * @author Kaizhi Zhuang
  */
 @Entity
-@Table(name = "test")
+@Table(name = "ShareCompany")
 public class ShareCompany implements Serializable 
 {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(name = "CompanyId", nullable = false, length = 20 )
-    private String companyId;
-    
-    @Column(name = "ShareClassId", length = 20)
-    private String shareClassId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "ShareClassId", nullable = false, length = 11 )
+	private int shareClassId;
 
     @Column(name = "LegalName", length = 100)
     private String legalName;
 
-	public String getCompanyId()
-	{
-		return companyId;
-	}
-
-	public void setCompanyId(String companyId)
-	{
-		this.companyId = companyId;
-	}
-
-	public String getShareClassId()
+	public int getShareClassId()
 	{
 		return shareClassId;
 	}
 
-	public void setShareClassId(String shareClassId)
+	public void setShareClassId(int shareClassId)
 	{
 		this.shareClassId = shareClassId;
 	}
@@ -60,6 +50,7 @@ public class ShareCompany implements Serializable
 	{
 		this.legalName = legalName;
 	}
-    
+
+	
 	
 }

@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jasonz.dao.IUserDao;
 import com.jasonz.entities.UserRecord;
+import com.jasonz.repositories.IUserDao;
 
 /** 
 * @author Jason Zhuang

@@ -1,37 +1,33 @@
-package com.jasonz.daoImpl;
+package com.jasonz.repositories;
 
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.provider.PersistenceProvider;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
-import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.jasonz.dao.ICustomRepository;
 
 /**
  * @author Jason Zhuang
  * @version Create Date：Aug 22, 2018 9:56:10 AM
  */
 @Repository
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 public class CustomRepositoryImpl<T, ID extends Serializable> 
 		extends SimpleJpaRepository<T, ID>
-		implements ICustomRepository<T, ID>, Serializable
+		implements ICustomRepository<T, ID>
 {
-	private static final long serialVersionUID = 1L;
-
 	private final int batchSize = 1000;
-
-	private final JpaEntityInformation<T, ?> entityInformation;
-	private final EntityManager localEM;
-	private final PersistenceProvider provider;
+	private JpaEntityInformation<T, ?> entityInformation;
+	private EntityManager localEM;
+	private PersistenceProvider provider;
 	
+	//@Autowired
 	public CustomRepositoryImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) 
 	{
 		super(entityInformation, entityManager);
@@ -40,9 +36,12 @@ public class CustomRepositoryImpl<T, ID extends Serializable>
 		this.provider = PersistenceProvider.fromEntityManager(entityManager);
 	}
 	
-	public CustomRepositoryImpl(Class<T> domainClass, EntityManager em) 
+	@Autowired
+	public CustomRepositoryImpl(Class<T> domainClass, EntityManager entityManager) 
 	{
-		this(JpaEntityInformationSupport.getEntityInformation(domainClass, em), em);
+		    super(domainClass, entityManager);
+		    // This is the recommended method for accessing inherited class dependencies.
+		    this.localEM = entityManager;
 	}
 	
 	public JpaEntityInformation<T, ?> getEntityInformation()
@@ -50,10 +49,6 @@ public class CustomRepositoryImpl<T, ID extends Serializable>
 		return entityInformation;
 	}
 
-	public PersistenceProvider getProvider()
-	{
-		return provider;
-	}
 
 	@Override
 	public void truncateTable(String tableName)

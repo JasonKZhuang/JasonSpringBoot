@@ -1,4 +1,4 @@
-package com.jasonz.dao;
+package com.jasonz.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 

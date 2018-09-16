@@ -95,13 +95,13 @@ public class StaticUtils
 
 	public static String getLocalDataStoreDirectory()
 	{
-		String file = projectPath + "\\data\\";
+		String file = projectPath + "/data/";
 		return file;
 	}
 
 	public static String getSpringConfigFile()
 	{
-		String file = resourcePath + "\\conf\\spring.xml";
+		String file = resourcePath + "/conf/spring.xml";
 		return file;
 	}
 	
@@ -121,7 +121,7 @@ public class StaticUtils
 	            	String extensionName= FilenameUtils.getExtension(theName);
 	            	if (extensionName.equals("csv"))
 	            	{
-	            		fileNames.add(localDirectory+"\\"+theName);
+	            		fileNames.add(localDirectory + "/" + theName);
 	            	}else
 	            	{
 	            		continue;
@@ -137,5 +137,34 @@ public class StaticUtils
 	    
 	    return fileNames;
 	}
+	
+	public static List<String> getTXTDataFileNames()
+	{
+		List<String> fileNames = new ArrayList<>();
+		File localDirectory = new File(getLocalDataStoreDirectory()+"Stocks");
+	    String[] localDirectoryFiles = localDirectory.list();
+	    if (localDirectoryFiles.length > 0) 
+	    {
+	        // determine the latest available filename
+	        for (int i = 0; i < localDirectoryFiles.length; i++) 
+	        {
+	            String theName = localDirectoryFiles[i];
+	            if ((theName != null) && (!theName.equals(""))) 
+	            {
+	            	String extensionName= FilenameUtils.getExtension(theName);
+	            	if (extensionName.equals("txt"))
+	            	{
+	            		fileNames.add(localDirectory + "/" + theName);
+	            	}else
+	            	{
+	            		continue;
+	            	}
+	            }
+	        }
+	    }
+	    
+	    return fileNames;
+	}
+
 
 }
