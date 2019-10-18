@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- A bean sample -->
+	<bean id="beanSample" name="beanSample" class="springApp.beans.BeanSample" 
+          init-method="init" destroy-method="destroy">
+    </bean>
+    
+    <!-- Constructor-based dependency injection -->
+    <bean id="baseInstanceBean" name="baseInstanceBean" class="springApp.beans.BaseInstanceBean">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="argString"/>
+    </bean>
+    
+    <!-- Setter-based dependency injection -->
+    
+    <!--  -->
+    
+    <!-- Instantiation with a static factory method -->
+	<bean id="myStaticProductionFactory"
+		class="springApp.beans.beanFactory.StaticProductionFactory"
+		factory-method="createInstance">
+	</bean>
+
+    <!-- Instantiation using an instance factory method -->
+	<!-- One factory class can also hold more than one factory method  -->
+    <bean id="myInstanceProductionFactory" class="springApp.beans.beanFactory.InstanceProductionFactory">
+        <!-- inject any dependencies required by this locator bean -->
+    </bean>
+	<!-- the bean is to be created via the factory bean -->
+	<bean id="clientService"
+	    factory-bean="myInstanceProductionFactory"
+	    factory-method="createClientServiceInstance"/>
+	<!-- the bean is to be created via the factory bean -->
+	<bean id="accountService"
+	    factory-bean="myInstanceProductionFactory"
+	    factory-method="createAccountServiceInstance"/>
+    
+    
+</beans>

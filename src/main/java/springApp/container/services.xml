@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- use the <import/> element to load bean definitions from another file -->
+    <import resource="resources/messageSource.xml"/>
+
+    <!-- services -->
+    <bean id="myProductionService" class="springApp.servicesSamples.ProductionServiceImpl">
+        <property name="productionDao"  ref="productionDao"/>
+        <property name="categoryDao"    ref="categoryDao"/>
+        <!-- additional collaborators and configuration for this bean go here -->
+    </bean>
+
+    <!-- more bean definitions for services go here -->
+
+</beans>

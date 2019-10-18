@@ -27,6 +27,16 @@ public class CustomRepositoryImpl<T, ID extends Serializable>
 	private EntityManager localEM;
 	private PersistenceProvider provider;
 	
+	public PersistenceProvider getProvider()
+	{
+		return provider;
+	}
+
+	public void setProvider(PersistenceProvider provider)
+	{
+		this.provider = provider;
+	}
+
 	//@Autowired
 	public CustomRepositoryImpl(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) 
 	{

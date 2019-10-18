@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- A MovieFinder Bean -->
+	<bean id="movieFinder1" name="movieFinder1"
+		class="springApp.di.MovieFinder1">
+	</bean>
+	<bean id="movieFinder2" name="movieFinder2"
+		class="springApp.di.MovieFinder2">
+	</bean>
+
+	<!-- Constructor-based dependency injection -->
+	<bean id="constructorBased" name="constructorBased"
+		class="springApp.di.DIConstructorBased">
+		<constructor-arg index="0" ref="movieFinder1" />
+		<constructor-arg index="1" ref="movieFinder2" />
+		<constructor-arg index="2" type="int" value="22" />
+	</bean>
+
+	<!-- Setter-based dependency injection -->
+	<bean id="setterBased" name="setterBased"
+		class="springApp.di.DISetterBased">
+		<!-- setter injection using the nested ref element -->
+	    <property name="movieFinder1">
+	        <ref bean="movieFinder1"/>
+	    </property>
+	    
+	    <!-- setter injection using the neater ref attribute -->
+	    <property name="movieFinder2" ref="movieFinder2"/>
+	    
+	    <property name="idx" value="1"/>
+	    
+	</bean>
+
+
+</beans>

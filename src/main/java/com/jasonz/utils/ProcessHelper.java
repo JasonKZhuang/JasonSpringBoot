@@ -7,6 +7,16 @@ public class ProcessHelper
 {
 	private String pName;
 
+	public String getpName()
+	{
+		return pName;
+	}
+
+	public void setpName(String pName)
+	{
+		this.pName = pName;
+	}
+
 	public ProcessHelper(String pName)
 	{
 		this.pName = pName;
@@ -183,6 +193,7 @@ public class ProcessHelper
 		try
 		{
 			Process p = Runtime.getRuntime().exec(task);
+			p.isAlive();
 		} catch (IOException e)
 		{
 			e.printStackTrace();

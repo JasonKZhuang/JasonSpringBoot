@@ -1133,18 +1133,21 @@ public class JDateUtils
 
 	public static int getIntervalMonths(String begin, String end)
 	{
-
+		Calendar calendar1 = Calendar.getInstance();
+		Calendar calendar2 = Calendar.getInstance();
+		
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		try
 		{
 			Date beginDate = df.parse(begin);
 			Date endDate = df.parse(end);
+			calendar1.setTime(beginDate);
+			calendar2.setTime(endDate);
+			int beginYear  = calendar1.get(Calendar.YEAR);
+			int beginMonth = calendar1.get(Calendar.MONTH) + 1;
 
-			int beginYear = beginDate.getYear();
-			int beginMonth = beginDate.getMonth();
-
-			int endYear = endDate.getYear();
-			int endMonth = endDate.getMonth();
+			int endYear =  calendar2.get(Calendar.YEAR);
+			int endMonth = calendar2.get(Calendar.MONTH) + 1;
 
 			int difMonth = (endYear - beginYear) * 12 + (endMonth - beginMonth)
 					+ 1;
