@@ -18,8 +18,12 @@ public class DIConstructorBased
     // business logic that actually uses the injected MovieFinder is omitted...
 	public void execute()
 	{
+		System.out.println("==Constructor-based injection=====================");
 		System.out.println("==>The idx of this class is " + this.idx);
 		this.movieFinder1.method1();
 		this.movieFinder2.method1();
+		System.out.println("==================================================");
 	}
+	
+	
 }

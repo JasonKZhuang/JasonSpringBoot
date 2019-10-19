@@ -24,16 +24,70 @@
 	<bean id="setterBased" name="setterBased"
 		class="springApp.di.DISetterBased">
 		<!-- setter injection using the nested ref element -->
-	    <property name="movieFinder1">
-	        <ref bean="movieFinder1"/>
-	    </property>
-	    
-	    <!-- setter injection using the neater ref attribute -->
-	    <property name="movieFinder2" ref="movieFinder2"/>
-	    
-	    <property name="idx" value="1"/>
-	    
+		<property name="movieFinder1">
+			<ref bean="movieFinder1" />
+		</property>
+
+		<!-- setter injection using the neater ref attribute -->
+		<property name="movieFinder2" ref="movieFinder2" />
+
+		<property name="idx" value="1" />
+
 	</bean>
 
 
+	<bean id="diDetails" class="springApp.di.DIDetails">
+		<!-- Dependencies - Straight values -->
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+
+		<!-- Dependencies - typed as a java.util.Properties -->
+		<property name="properties">
+			<value>
+				jdbc.driver.className=com.mysql.jdbc.Driver
+				jdbc.url=jdbc:mysql://localhost:3306/mydb
+			</value>
+		</property>
+
+		<!-- results in a setAdminEmails(java.util.Properties) call -->
+		<property name="adminEmails">
+			<props>
+				<prop key="administrator">administrator@example.org</prop>
+				<prop key="support">support@example.org</prop>
+				<prop key="development">development@example.org</prop>
+			</props>
+		</property>
+
+		<!-- results in a setSomeList(java.util.List) call -->
+		<property name="someList">
+			<list>
+				<value>A list element 1</value>
+				<value>A list element 2</value>
+				<!-- ref bean="movieFinder1" / -->
+			</list>
+		</property>
+
+		<!-- results in a setSomeMap(java.util.Map) call -->
+		<property name="someMap">
+			<map>
+				<entry key="1" value="Some String1" />
+				<entry key="2" value="Some String2" />
+				<!-- entry key ="key2" value-ref="movieFinder2"/ -->
+			</map>
+		</property>
+
+	</bean>
+
+	<!-- The depends-on attribute can explicitly force one or more beans to 
+		be initialized before the bean using this element is initialized. A lazy-initialized 
+		bean tells the IoC container to create a bean instance when it is first requested, 
+		rather than at startup. -->
+	<bean id="diUsingDependsOn" class="springApp.di.DIUsingDependsOn"
+		depends-on="movieFinder1,movieFinder2" lazy-init="true">
+	</bean>
+
+	
 </beans>
