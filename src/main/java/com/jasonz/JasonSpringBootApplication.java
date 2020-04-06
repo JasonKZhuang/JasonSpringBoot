@@ -27,6 +27,8 @@ public class JasonSpringBootApplication extends SpringBootServletInitializer
 {
 	public static void main(String[] args)
 	{
+		System.setProperty("server.servlet.context-path", "/jasonSpringBoot");
+		
 		SpringApplication.run(JasonSpringBootApplication.class, args);
 		
 		//System.out.println("=============");
