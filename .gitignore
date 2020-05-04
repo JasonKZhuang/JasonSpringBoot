@@ -1,4 +1,8 @@
-/target/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Bb]uild/
+/[Bb]uilds/
+/[Tt]arget/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
