@@ -5,7 +5,6 @@ public class ClientServiceImpl implements ClientService
 
 	public ClientServiceImpl()
 	{
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

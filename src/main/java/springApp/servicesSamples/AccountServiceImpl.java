@@ -5,7 +5,6 @@ public class AccountServiceImpl implements AccountService
 
 	public AccountServiceImpl()
 	{
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

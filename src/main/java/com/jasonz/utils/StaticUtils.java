@@ -67,7 +67,6 @@ public class StaticUtils
 			date = new SimpleDateFormat("yyyy-MM-dd").parse("2008-05-14");
 		} catch (ParseException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	

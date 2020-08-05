@@ -11,7 +11,6 @@ public class DISetterBased
 
 	private DISetterBased()
 	{
-		// TODO Auto-generated constructor stub
 	}
 
 	// business logic that actually uses the injected MovieFinder is omitted...
