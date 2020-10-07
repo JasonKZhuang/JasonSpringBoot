@@ -12,7 +12,7 @@ import springApp.beans.Production;
 //The @ResponseBody annotation is active by default. 
 
 @RestController
-@RequestMapping("productions")//http://localhost:8080/context/productions
+@RequestMapping("restProductions")//http://localhost:8080/context/restProductions
 public class SimpleRestController
 {
 	Production production = new Production();
